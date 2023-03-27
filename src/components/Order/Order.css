@@ -6,5 +6,6 @@
 @media only screen and (max-width: 768px) {
   .order-container {
     grid-template-columns: 1fr;
+    margin-bottom: 230px;
   }
 }

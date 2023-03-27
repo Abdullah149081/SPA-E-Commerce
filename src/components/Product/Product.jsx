@@ -8,7 +8,7 @@ const Product = (props) => {
       <div className="card w-96 h-full  shadow-xl bg-base-100 rounded-lg">
         <img src={img} alt="Shoes" className="rounded-2xl p-2 h-96" />
 
-        <div className="card-body px-4 ">
+        <div className="card-body px-4 mt-3">
           <div className="mb-11 h-32 space-y-4">
             {" "}
             <h2 className="card-title text-xl font-bold">{name}</h2>
