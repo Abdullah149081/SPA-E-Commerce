@@ -1,0 +1,10 @@
+.header {
+  height: 80px;
+  background-color: #1c2b35;
+  display: flex;
+}
+
+.header a {
+  color: #ffffff;
+  margin-right: 32px;
+}
