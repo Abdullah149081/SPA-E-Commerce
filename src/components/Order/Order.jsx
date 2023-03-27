@@ -15,7 +15,7 @@ const Order = () => {
 
   return (
     <div className="order-container">
-      <div className="md:px-28 grid grid-cols-3  gap-4 py-28 ">
+      <div className="md:px-28 grid grid-cols-3  gap-4 py-28  ">
         {products.map((product) => (
           <Product {...product} key={product.id}></Product>
         ))}
