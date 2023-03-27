@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     colors: {
       tertiary: "#FFE0B3",
+      textColor: "#2A414F",
     },
     daisyui: {
       themes: false,
