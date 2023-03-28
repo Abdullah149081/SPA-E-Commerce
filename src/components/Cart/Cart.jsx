@@ -23,9 +23,9 @@ const Cart = ({ cart }) => {
             Clear Cart
             <FontAwesomeIcon icon={faTrashCan} className="ml-2" />
           </button>
-          <button className=" order-btn bg-btnPrimary">
+          <button className=" order-btn bg-btnPrimary ">
             Review Order
-            <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
+            <FontAwesomeIcon icon={faArrowRight} className="ml-2 " />
           </button>
         </div>
       </div>

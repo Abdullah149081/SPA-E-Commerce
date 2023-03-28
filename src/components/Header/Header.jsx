@@ -5,7 +5,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <div className="md:sticky top-0">
-      <nav className="header justify-between items-center md:px-28 ">
+      <nav className="nav justify-between items-center md:px-28 ">
         <a href="">
           {" "}
           <img src={logo} alt="" />
