@@ -14,6 +14,7 @@ const Order = () => {
         console.log(err);
       });
   }, []);
+  //important Product component
   const [cart, setCart] = useState([]);
   const addToCart = (product) => {
     const newCart = [...cart, product];
@@ -27,7 +28,7 @@ const Order = () => {
           <Product {...product} key={product.id} addToCart={addToCart}></Product>
         ))}
       </div>
-      <div className="bg-tertiary">
+      <div className="bg-tertiary cart-container">
         <Cart cart={cart}></Cart>
       </div>
     </div>
