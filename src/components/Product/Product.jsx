@@ -4,13 +4,14 @@ import React from "react";
 import "./Product.css";
 
 const Product = (props) => {
+  console.log("products",props);
   const { img, name, price, ratings, seller } = props.product;
   const addToCart = props.addToCart;
 
   return (
     <>
       <div className="card w-96 h-full  shadow-xl bg-base-100 rounded-lg">
-        <img src={img} alt="Shoes" className="rounded-2xl p-2 h-96" />
+        <img src={img} alt={name} className="rounded-2xl p-2 h-96" />
 
         <div className="card-body px-4 mt-3">
           <div className="mb-11 h-32 space-y-4">
