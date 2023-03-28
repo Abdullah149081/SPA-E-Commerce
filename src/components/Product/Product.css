@@ -4,3 +4,6 @@
 .cart-btn {
   border-top: 1px solid #95a0a7;
 }
+.cart-btn:hover{
+  background-color: #95a0a7;
+}
