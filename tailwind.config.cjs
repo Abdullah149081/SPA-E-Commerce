@@ -5,6 +5,8 @@ module.exports = {
     colors: {
       tertiary: "#FFE0B3",
       textColor: "#2A414F",
+      btnPrimary: "#FF9900",
+      btnSecondary:"#FF3030"
     },
     daisyui: {
       themes: false,
