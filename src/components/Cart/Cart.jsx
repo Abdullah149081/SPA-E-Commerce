@@ -4,8 +4,26 @@ import React from "react";
 import "./Cart.css";
 
 const Cart = ({ cart }) => {
-  const totalPrice = cart.reduce((previousTotal, currentTotal) => previousTotal + currentTotal.price, 0);
-  const shippingCharge = cart.reduce((previousShipping, currentShipping) => previousShipping + currentShipping.shipping, 0);
+  // const totalPrice = cart.reduce((previousTotal, currentTotal) => previousTotal + currentTotal.price, 0);
+
+  let totalPrice = 0;
+  let shippingCharge = 0;
+  let quantity = 0;
+  for (const product of cart) {
+    console.log(product);
+
+    // Method : 1
+    // if (product.quantity === 0) {
+    //   product.quantity = 1;
+    // }
+
+    //  Method :2 
+    // product.quantity = product.quantity || 1;
+    totalPrice = totalPrice + product.price * product.quantity;
+    shippingCharge = shippingCharge + product.shipping;
+    quantity = quantity + product.quantity;
+  }
+
   const tax = (totalPrice * 7) / 100;
   const grandPrice = totalPrice + shippingCharge + tax;
 
@@ -13,7 +31,7 @@ const Cart = ({ cart }) => {
     <div className="cart">
       <h2 className="text-center pt-7 text-2xl font-medium ">Order Summery</h2>
       <div className="px-6 mt-10 space-y-4">
-        <p className="text-xl ">Selected Items: {cart.length}</p>
+        <p className="text-xl ">Selected Items: {quantity}</p>
         <p className="text-xl ">Total Price: ${totalPrice}</p>
         <p className="text-xl ">Total Shipping Charge: ${shippingCharge}</p>
         <p className="text-xl ">Tax: ${tax.toFixed(2)}</p>

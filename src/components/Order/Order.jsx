@@ -48,7 +48,7 @@ const Order = () => {
     <div className="order-container">
       <div className="md:px-28 grid grid-cols-1 md:grid-cols-3  gap-4 py-28  ">
         {products.map((product) => (
-          <Product {...product} key={product.id} addToCart={addToCart}></Product>
+          <Product product={product} key={product.id} addToCart={addToCart}></Product>
         ))}
       </div>
       <div className="bg-tertiary cart-container">
