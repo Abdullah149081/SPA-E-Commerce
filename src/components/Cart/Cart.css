@@ -5,10 +5,11 @@
 }
 .order-btn {
   color: #fff;
-  padding: 14px 72px;
+  padding: 14px 24px;
   border-radius: 4px;
   font-size: 24px;
   font-weight: 600;
+  width: 100%;
 }
 .order-btn:hover{
  color: #000;

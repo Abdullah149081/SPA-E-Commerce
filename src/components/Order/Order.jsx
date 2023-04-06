@@ -1,4 +1,7 @@
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { addToDb, deleteShoppingCart, getShoppingCart } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
@@ -70,7 +73,14 @@ const Order = () => {
         ))}
       </div>
       <div className="bg-tertiary cart-container">
-        <Cart handlerCartRemove={handlerCartRemove} cart={cart}></Cart>
+        <Cart handlerCartRemove={handlerCartRemove} cart={cart}>
+          <Link>
+            <button className=" order-btn bg-btnPrimary flex items-center justify-around ">
+              Review Order
+              <FontAwesomeIcon icon={faArrowRight} className="ml-2 " />
+            </button>
+          </Link>
+        </Cart>
       </div>
     </div>
   );

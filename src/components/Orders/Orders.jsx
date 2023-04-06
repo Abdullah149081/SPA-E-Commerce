@@ -1,5 +1,7 @@
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { deleteShoppingCart, removeFromDb } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import OrderItem from "../OrderItem/OrderItem";
@@ -13,10 +15,10 @@ const Orders = () => {
     setCart(remaining);
     removeFromDb(id);
   };
-  const handlerCartRemove =()=>{
-    setCart([])
-    deleteShoppingCart()
-  }
+  const handlerCartRemove = () => {
+    setCart([]);
+    deleteShoppingCart();
+  };
 
   return (
     <div className="order-container">
@@ -26,7 +28,15 @@ const Orders = () => {
         ))}
       </div>
       <div className="bg-tertiary cart-container rounded-b-lg">
-        <Cart cart={cart} handlerCartRemove={handlerCartRemove}></Cart>
+        <Cart cart={cart} handlerCartRemove={handlerCartRemove}>
+          <Link>
+            {" "}
+            <button className=" order-btn flex items-center justify-around  bg-btnPrimary ">
+              Proceed Checkout
+              <FontAwesomeIcon icon={faArrowRight} className="ml-2 " />
+            </button>
+          </Link>
+        </Cart>
       </div>
     </div>
   );
