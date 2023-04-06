@@ -1,5 +1,6 @@
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../images/Logo.svg";
 import ActiveLink from "../ActiveLink";
 import "./Header.css";
@@ -10,10 +11,10 @@ const Header = () => {
   return (
     <div className="md:sticky top-0">
       <nav className="nav  justify-between items-center pl-4 lg:px-28  ">
-        <a href="">
+        <Link to="/">
           {" "}
           <img src={logo} alt="" />
-        </a>
+        </Link>
         {/* a*4[href=$]{$}  */}
         <div>
           <div
@@ -33,7 +34,7 @@ const Header = () => {
 
           <div
             className={`flex flex-col text-white font-semibold md:space-x-10  md:flex-row  md:block ${
-              open ? "top-22 right-0  bg-[#1c2b35] py-6 pl-8 space-y-6 rounded-bl-lg absolute  z-20" : "hidden"
+              open ? "top-22 right-0  bg-[#1c2b35] py-6 pl-12 pr-6 space-y-6 rounded-bl-lg absolute  z-20" : "hidden"
             }`}
           >
             <ActiveLink to="/orders">Orders</ActiveLink>

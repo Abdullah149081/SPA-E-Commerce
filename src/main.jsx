@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import cartProductLoader from "./cartProductLoader/cartProductLoader";
 import ErrorPage from "./components/ErrorPage";
 import Home from "./components/Home";
 import Order from "./components/Order/Order";
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       {
         path: "orders",
         element: <Orders></Orders>,
+        loader: cartProductLoader,
       },
     ],
   },
