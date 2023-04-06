@@ -29,8 +29,8 @@ const Header = () => {
             </span>
           </div>
 
-          <div className={`flex flex-col  md:flex-row  md:block ${open ? "top-22 right-0  bg-[#1c2b35] py-6 pl-8 space-y-6 rounded-bl-lg absolute " : "hidden"}`}>
-            <a href="/order">Order</a>
+          <div className={`flex flex-col  md:flex-row  md:block ${open ? "top-22 right-0  bg-[#1c2b35] py-6 pl-8 space-y-6 rounded-bl-lg absolute  z-20" : "hidden"}`}>
+            <a href="/orders">Orders</a>
             <a href="/order-review">Order Review</a>
             <a href="/manage-Inventory">Manage Inventory</a>
             <a href="/login">Login</a>
