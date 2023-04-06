@@ -1,4 +1,7 @@
-.order-item{
-    border: 1px solid #95A0A7;
-border-radius: 8px;
+.order-item {
+  border: 1px solid #95a0a7;
+  border-radius: 8px;
+  max-width: 868px;
+  width: 100%;
+  
 }

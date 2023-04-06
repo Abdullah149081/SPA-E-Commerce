@@ -10,14 +10,12 @@ const Cart = ({ cart }) => {
   let shippingCharge = 0;
   let quantity = 0;
   for (const product of cart) {
-    console.log(product);
-
     // Method : 1
     // if (product.quantity === 0) {
     //   product.quantity = 1;
     // }
 
-    //  Method :2 
+    //  Method :2
     // product.quantity = product.quantity || 1;
     totalPrice = totalPrice + product.price * product.quantity;
     shippingCharge = shippingCharge + product.shipping;
