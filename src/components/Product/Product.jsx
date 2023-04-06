@@ -10,8 +10,8 @@ const Product = (props) => {
 
   return (
     <>
-      <div className="card w-96 h-full  shadow-xl bg-base-100 rounded-lg">
-        <img src={img} alt={name} className="rounded-2xl p-2 h-96" />
+      <div className="card w-full h-full  shadow-xl bg-base-100 rounded-lg">
+        <img src={img} alt={name} className="rounded-2xl p-2 h-96 w-full" />
 
         <div className="card-body px-4 mt-3">
           <div className="mb-11 h-32 space-y-4">

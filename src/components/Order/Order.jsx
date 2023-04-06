@@ -6,17 +6,8 @@ import "./Order.css";
 
 const Order = () => {
   const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-  //important Product component
   const [cart, setCart] = useState([]);
+  //important Product component
   const addToCart = (product) => {
     // const newCart = [...cart, product];
     let newCart = [];
@@ -34,6 +25,15 @@ const Order = () => {
     setCart(newCart);
     addToDb(product.id);
   };
+
+  useEffect(() => {
+    fetch("products.json")
+      .then((res) => res.json())
+      .then((data) => setProducts(data))
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   useEffect(() => {
     //local storage id
     const storeCart = getShoppingCart();
@@ -58,7 +58,7 @@ const Order = () => {
 
   return (
     <div className="order-container">
-      <div className="md:px-28 grid grid-cols-1 md:grid-cols-3  gap-4 py-28  ">
+      <div className="md:px-28  grid grid-cols-1 md:grid-cols-3  gap-4 py-28  ">
         {products.map((product) => (
           <Product product={product} key={product.id} addToCart={addToCart}></Product>
         ))}
