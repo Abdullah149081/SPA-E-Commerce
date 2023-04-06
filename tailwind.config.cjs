@@ -11,6 +11,8 @@ module.exports = {
 
       textColor: "#2A414F",
 
+      white:"#ffff",
+
       btnPrimary: "#FF9900",
 
       btnSecondary: "#FF3030",
@@ -27,7 +29,6 @@ module.exports = {
 
       error: "#E64C6B",
     },
-
-    plugins: [],
   },
+  plugins: [],
 };

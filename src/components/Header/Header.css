@@ -4,11 +4,6 @@
   display: flex;
 }
 
-.nav a {
-  color: #ffffff;
-  margin-right: 32px;
-  font-weight: 600;
-}
-.nav :hover {
+.nav a:hover {
   color: #ff9900;
 }

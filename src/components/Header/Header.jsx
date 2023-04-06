@@ -1,13 +1,15 @@
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
 import logo from "../../images/Logo.svg";
+import ActiveLink from "../ActiveLink";
 import "./Header.css";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+
   return (
     <div className="md:sticky top-0">
-      <nav className="nav  justify-between items-center pl-4 lg:px-28 ">
+      <nav className="nav  justify-between items-center pl-4 lg:px-28  ">
         <a href="">
           {" "}
           <img src={logo} alt="" />
@@ -29,11 +31,15 @@ const Header = () => {
             </span>
           </div>
 
-          <div className={`flex flex-col  md:flex-row  md:block ${open ? "top-22 right-0  bg-[#1c2b35] py-6 pl-8 space-y-6 rounded-bl-lg absolute  z-20" : "hidden"}`}>
-            <a href="/orders">Orders</a>
-            <a href="/order-review">Order Review</a>
-            <a href="/manage-Inventory">Manage Inventory</a>
-            <a href="/login">Login</a>
+          <div
+            className={`flex flex-col text-white font-semibold md:space-x-10  md:flex-row  md:block ${
+              open ? "top-22 right-0  bg-[#1c2b35] py-6 pl-8 space-y-6 rounded-bl-lg absolute  z-20" : "hidden"
+            }`}
+          >
+            <ActiveLink to="/orders">Orders</ActiveLink>
+            <ActiveLink to="/order-review">Order Review</ActiveLink>
+            <ActiveLink to="/manage-Inventory">Manage Inventory</ActiveLink>
+            <ActiveLink to="/login">Login</ActiveLink>
           </div>
         </div>
       </nav>
