@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { addToDb, getShoppingCart } from "../../utilities/fakedb";
+import { addToDb, deleteShoppingCart, getShoppingCart } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
 import "./Order.css";
@@ -7,6 +7,12 @@ import "./Order.css";
 const Order = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+
+  const handlerCartRemove = () => {
+    setCart([]);
+    deleteShoppingCart();
+  };
+
   //important Product component
   const addToCart = (product) => {
     // const newCart = [...cart, product];
@@ -64,7 +70,7 @@ const Order = () => {
         ))}
       </div>
       <div className="bg-tertiary cart-container">
-        <Cart cart={cart}></Cart>
+        <Cart handlerCartRemove={handlerCartRemove} cart={cart}></Cart>
       </div>
     </div>
   );

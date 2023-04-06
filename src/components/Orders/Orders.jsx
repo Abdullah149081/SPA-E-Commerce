@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { removeFromDb } from "../../utilities/fakedb";
+import { deleteShoppingCart, removeFromDb } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import OrderItem from "../OrderItem/OrderItem";
 
@@ -13,6 +13,10 @@ const Orders = () => {
     setCart(remaining);
     removeFromDb(id);
   };
+  const handlerCartRemove =()=>{
+    setCart([])
+    deleteShoppingCart()
+  }
 
   return (
     <div className="order-container">
@@ -22,7 +26,7 @@ const Orders = () => {
         ))}
       </div>
       <div className="bg-tertiary cart-container rounded-b-lg">
-        <Cart cart={cart}></Cart>
+        <Cart cart={cart} handlerCartRemove={handlerCartRemove}></Cart>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./Cart.css";
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, handlerCartRemove }) => {
   // const totalPrice = cart.reduce((previousTotal, currentTotal) => previousTotal + currentTotal.price, 0);
 
   let totalPrice = 0;
@@ -35,7 +35,7 @@ const Cart = ({ cart }) => {
         <p className="text-xl ">Tax: ${tax.toFixed(2)}</p>
         <h3 className="text-2xl font-bold">Grand Total: ${grandPrice.toFixed(2)}</h3>
         <div className="flex flex-col gap-5 ">
-          <button className=" mt-16  order-btn bg-btnSecondary ">
+          <button onClick={handlerCartRemove} className=" mt-16  order-btn bg-btnSecondary ">
             Clear Cart
             <FontAwesomeIcon icon={faTrashCan} className="ml-2" />
           </button>
