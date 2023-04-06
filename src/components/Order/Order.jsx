@@ -35,7 +35,25 @@ const Order = () => {
       });
   }, []);
   useEffect(() => {
-    
+    //local storage id
+    const storeCart = getShoppingCart();
+    const saveCart = [];
+    //Step 1: get id
+    for (const id in storeCart) {
+      // Step 2: get the products by  using  (id)
+      const addedProduct = products.find((product) => product.id === id);
+
+      if (addedProduct) {
+        // Step 3: get quantity of the products
+        const quantity = storeCart[id];
+        addedProduct.quantity = quantity;
+        // Step:4  add the addedProduct to the saveCart
+        saveCart.push(addedProduct);
+      }
+    }
+
+    // Step  5: Set the cart
+    setCart(saveCart);
   }, [products]);
 
   return (
