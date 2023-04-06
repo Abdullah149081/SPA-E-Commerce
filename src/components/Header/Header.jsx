@@ -33,8 +33,8 @@ const Header = () => {
           </div>
 
           <div
-            className={`flex flex-col text-white font-semibold md:space-x-10  md:flex-row  md:block ${
-              open ? "top-22 right-0  bg-[#1c2b35] py-6 pl-12 pr-6 space-y-6 rounded-bl-lg absolute  z-20" : "hidden"
+            className={`flex flex-col text-white md:static font-semibold md:space-x-10  md:flex-row  md:block ${
+              open ? "top-22 right-0  bg-[#1c2b35] py-6 pl-12 pr-6 space-y-6 rounded-bl-lg absolute " : "hidden"
             }`}
           >
             <ActiveLink to="/orders">Orders</ActiveLink>
