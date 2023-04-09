@@ -1,5 +1,4 @@
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CreditCardIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { deleteShoppingCart, removeFromDb } from "../../utilities/fakedb";
@@ -33,7 +32,7 @@ const Orders = () => {
             {" "}
             <button className=" order-btn flex items-center justify-around  bg-btnPrimary ">
               Proceed Checkout
-              <FontAwesomeIcon icon={faArrowRight} className="ml-2 " />
+              <CreditCardIcon className="h-6 w-6 " />
             </button>
           </Link>
         </Cart>
