@@ -28,8 +28,7 @@ const Orders = () => {
       </div>
       <div className="bg-tertiary cart-container rounded-b-lg">
         <Cart cart={cart} handlerCartRemove={handlerCartRemove}>
-          <Link>
-            {" "}
+          <Link to="/proceed-checkout">
             <button className=" order-btn flex items-center justify-around  bg-btnPrimary ">
               Proceed Checkout
               <CreditCardIcon className="h-6 w-6 " />

@@ -6,10 +6,12 @@ import ErrorPage from "./components/ErrorPage/ErrorPage";
 import Home from "./components/Home";
 import Order from "./components/Order/Order";
 import Orders from "./components/Orders/Orders";
+import ProceedCheckout from "./components/ProceedCheckout/ProceedCheckout";
 import "./index.css";
 import Login from "./login/Login";
 import AuthProvider from "./provider/AuthProvider";
 import Register from "./Register/Register";
+import PrivateRoutes from "./routes/PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +35,14 @@ const router = createBrowserRouter([
       {
         path: "/sign-up",
         element: <Register></Register>,
+      },
+      {
+        path: "/proceed-checkout",
+        element: (
+          <PrivateRoutes>
+            <ProceedCheckout></ProceedCheckout>
+          </PrivateRoutes>
+        ),
       },
     ],
   },
