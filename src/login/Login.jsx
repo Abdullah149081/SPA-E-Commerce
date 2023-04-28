@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { userContext } from "../provider/AuthProvider";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const { signInUser } = useContext(userContext);
+
+  const handlerLogin = (e) => {
+    e.preventDefault();
+    setError("");
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    signInUser(email, password)
+      .then(() => {})
+      .catch((err) => {
+        setError(err?.message);
+      });
+  };
+
   const handlerShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -15,7 +30,7 @@ const Login = () => {
           <div className="text-center mt-7 ">
             <h1 className="text-2xl lg:text-4xl font-bold">Login</h1>
           </div>
-          <form className="card-body">
+          <form onSubmit={handlerLogin} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -35,7 +50,7 @@ const Login = () => {
                 Show Password
               </button>
             </div>
-            <p className="text-red-600 font-medium">{error}</p>
+            <p className="text-error font-medium">{error}</p>
             <div className="form-control mt-6 ">
               <button type="submit" className="btn hover:bg-tertiary  rounded-sm bg-tertiary border-0 text-textColor ">
                 Login

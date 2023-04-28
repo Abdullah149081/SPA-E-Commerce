@@ -1,12 +1,17 @@
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/Logo.svg";
+import { userContext } from "../../provider/AuthProvider";
 import ActiveLink from "../ActiveLink";
 import "./Header.css";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const { user, logOut } = useContext(userContext);
+  const handlerLogOut = () => {
+    logOut();
+  };
 
   return (
     <div className="md:sticky top-0 z-10">
@@ -23,7 +28,6 @@ const Header = () => {
             }}
           >
             <span className="pr-12 md:pr-0">
-              {" "}
               {open ? (
                 <XMarkIcon className="h-7 w-6 mt-7  text-btnSecondary md:hidden  cursor-pointer"></XMarkIcon>
               ) : (
@@ -37,6 +41,16 @@ const Header = () => {
               open ? "top-22 right-0  bg-[#1c2b35] py-6 pl-12 pr-6 space-y-6 rounded-bl-lg absolute z-10" : "hidden"
             }`}
           >
+            {user ? (
+              <>
+                <span className="font-medium ">{user.email}</span>
+                <Link onClick={handlerLogOut} className="inline-block" type="button">
+                  log out
+                </Link>
+              </>
+            ) : (
+              <Link to="/login">Sign in</Link>
+            )}
             <ActiveLink to="/orders">Orders</ActiveLink>
             <ActiveLink to="/order-review">Order Review</ActiveLink>
             <ActiveLink to="/manage-Inventory">Manage Inventory</ActiveLink>
