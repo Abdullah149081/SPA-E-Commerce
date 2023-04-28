@@ -8,6 +8,7 @@ import Order from "./components/Order/Order";
 import Orders from "./components/Orders/Orders";
 import "./index.css";
 import Login from "./login/Login";
+import AuthProvider from "./provider/AuthProvider";
 import Register from "./Register/Register";
 
 const router = createBrowserRouter([
@@ -39,6 +40,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

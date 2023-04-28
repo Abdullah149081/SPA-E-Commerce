@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { userContext } from "../provider/AuthProvider";
 
 const Register = () => {
   const [error, setError] = useState("");
+  const { user } = useContext(userContext);
+
   const handlerSignUp = (e) => {
     setError("");
     e.preventDefault();
@@ -15,7 +18,7 @@ const Register = () => {
       setError("password doesn't match");
       return;
     } else if (password.length < 6) {
-      setError("password should be use 6 character ");
+      setError("password should be use 6 characters or longer ");
       return;
     }
   };
