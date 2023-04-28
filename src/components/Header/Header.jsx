@@ -41,20 +41,17 @@ const Header = () => {
               open ? "top-22 right-0  bg-[#1c2b35] py-6 pl-12 pr-6 space-y-6 rounded-bl-lg absolute z-10" : "hidden"
             }`}
           >
-            {user ? (
-              <>
-                <span className="font-medium ">{user.email}</span>
-                <Link onClick={handlerLogOut} className="inline-block" type="button">
-                  log out
-                </Link>
-              </>
-            ) : (
-              <Link to="/login">Sign in</Link>
-            )}
+            {user && <span className="font-medium ">{user.email}</span>}
             <ActiveLink to="/orders">Orders</ActiveLink>
             <ActiveLink to="/order-review">Order Review</ActiveLink>
             <ActiveLink to="/manage-Inventory">Manage Inventory</ActiveLink>
-            <ActiveLink to="/login">Login</ActiveLink>
+            {user ? (
+              <button onClick={handlerLogOut} className="text-left hover:text-btnPrimary" type="button">
+                log out
+              </button>
+            ) : (
+              <ActiveLink to="/login">Login</ActiveLink>
+            )}
             <ActiveLink to="/sign-up">Sign up</ActiveLink>
           </div>
         </div>
