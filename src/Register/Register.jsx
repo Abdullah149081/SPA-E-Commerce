@@ -3,6 +3,22 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
   const [error, setError] = useState("");
+  const handlerSignUp = (e) => {
+    setError("");
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const confirm = form.confirm.value;
+
+    if (password !== confirm) {
+      setError("password doesn't match");
+      return;
+    } else if (password.length < 6) {
+      setError("password should be use 6 character ");
+      return;
+    }
+  };
   return (
     <div className="hero mt-20 ">
       <div className="hero-content  flex-col w-full  lg:w-5/6 ">
@@ -10,12 +26,12 @@ const Register = () => {
           <div className="text-center mt-7 ">
             <h1 className="text-2xl lg:text-4xl font-bold">Sign Up</h1>
           </div>
-          <form className="card-body">
+          <form onSubmit={handlerSignUp} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
-              <input type="email" name="email" placeholder="email" className="hover:bg-white input input-bordered" />
+              <input type="email" name="email" placeholder="email" className="hover:bg-white input input-bordered" required />
             </div>
 
             <div className="form-control">
@@ -28,10 +44,10 @@ const Register = () => {
               <label className="label">
                 <span className="label-text">Confirm Password</span>
               </label>
-              <input type="password" name="password" placeholder="password" className="input input-bordered" />
+              <input type="password" name="confirm" placeholder="password" className="input input-bordered" />
             </div>
 
-            <p className="text-red-600 font-medium">{error}</p>
+            <p className="text-error font-medium">{error}</p>
             <div className="form-control mt-6 ">
               <button type="submit" className="btn hover:bg-tertiary  rounded-sm bg-tertiary border-0 text-textColor ">
                 Sign Up
