@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { userContext } from "../provider/AuthProvider";
 
 const Register = () => {
   const [error, setError] = useState("");
   const { createNewUser, googleSign } = useContext(userContext);
+  const navigate = useNavigate();
 
   const handlerSignUp = (e) => {
     e.preventDefault();
@@ -24,6 +25,7 @@ const Register = () => {
     createNewUser(email, password)
       .then(() => {
         form.reset();
+        navigate("/");
       })
       .catch((err) => {
         setError(err?.message); // big problem
@@ -31,7 +33,13 @@ const Register = () => {
   };
 
   const handlerGoogleLogin = () => {
-    googleSign();
+    googleSign()
+      .then(() => {
+        navigate("/");
+      })
+      .catch((err) => {
+        setError(err?.message);
+      });
   };
   return (
     <div className="hero mt-20 ">
