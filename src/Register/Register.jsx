@@ -4,7 +4,7 @@ import { userContext } from "../provider/AuthProvider";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const { createNewUser } = useContext(userContext);
+  const { createNewUser, googleSign } = useContext(userContext);
 
   const handlerSignUp = (e) => {
     e.preventDefault();
@@ -28,6 +28,10 @@ const Register = () => {
       .catch((err) => {
         setError(err?.message); // big problem
       });
+  };
+
+  const handlerGoogleLogin = () => {
+    googleSign();
   };
   return (
     <div className="hero mt-20 ">
@@ -65,7 +69,7 @@ const Register = () => {
             </div>
 
             <div className="form-control mt-2">
-              <button type="button" className="btn hover:bg-white border-[#95A0A7;] border rounded-sm text-textColor bg-white space-x-2">
+              <button onClick={handlerGoogleLogin} type="button" className="btn hover:bg-white border-[#95A0A7;] border rounded-sm text-textColor bg-white space-x-2">
                 <svg width="26px" height="26px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
                   <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
                 </svg>
