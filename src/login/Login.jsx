@@ -1,11 +1,15 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { userContext } from "../provider/AuthProvider";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const { signInUser, googleSign } = useContext(userContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  // location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
 
   const handlerLogin = (e) => {
     e.preventDefault();
@@ -14,13 +18,19 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     signInUser(email, password)
-      .then(() => {})
+      .then(() => {
+        navigate(from, { replace: true });
+      })
       .catch((err) => {
         setError(err?.message);
       });
   };
   const handlerGoogleLogin = () => {
-    googleSign();
+    googleSign()
+      .then(() => {
+        navigate(from, { replace: true });
+      })
+      .catch(() => {});
   };
 
   const handlerShowPassword = () => {

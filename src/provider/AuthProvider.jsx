@@ -15,9 +15,11 @@ const AuthProvider = ({ children }) => {
   };
 
   const signInUser = (email, password) => {
+    setLoading(true); //important
     return signInWithEmailAndPassword(auth, email, password);
   };
   const googleSign = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleAuthProvider);
   };
 
