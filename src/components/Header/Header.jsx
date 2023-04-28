@@ -9,7 +9,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="md:sticky top-0">
+    <div className="md:sticky top-0 z-10">
       <nav className="nav  justify-between items-center pl-4 lg:px-28  ">
         <Link to="/">
           {" "}
@@ -34,7 +34,7 @@ const Header = () => {
 
           <div
             className={`flex flex-col text-white md:static font-semibold md:space-x-10  md:flex-row  md:block ${
-              open ? "top-22 right-0  bg-[#1c2b35] py-6 pl-12 pr-6 space-y-6 rounded-bl-lg absolute " : "hidden"
+              open ? "top-22 right-0  bg-[#1c2b35] py-6 pl-12 pr-6 space-y-6 rounded-bl-lg absolute z-10" : "hidden"
             }`}
           >
             <ActiveLink to="/orders">Orders</ActiveLink>

@@ -11,7 +11,7 @@ module.exports = {
 
       textColor: "#2A414F",
 
-      white:"#ffff",
+      white: "#ffff",
 
       btnPrimary: "#FF9900",
 
@@ -30,5 +30,9 @@ module.exports = {
       error: "#E64C6B",
     },
   },
-  plugins: [],
+  daisyui: {
+    themes: ["light",],
+  },
+
+  plugins: [require("daisyui")],
 };
