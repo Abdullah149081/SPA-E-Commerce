@@ -41,6 +41,7 @@ const Header = () => {
             <ActiveLink to="/order-review">Order Review</ActiveLink>
             <ActiveLink to="/manage-Inventory">Manage Inventory</ActiveLink>
             <ActiveLink to="/login">Login</ActiveLink>
+            <ActiveLink to="/sign-up">Sign up</ActiveLink>
           </div>
         </div>
       </nav>

@@ -29,7 +29,7 @@
   padding: 12px 30px;
   font-weight: 700;
   background-color: #f99827;
-  color: #fff;
+  color: #232323;
   border-radius: 40px;
   text-decoration: none;
   -webkit-transition: 0.2s all;
@@ -37,7 +37,7 @@
 }
 
 .notfound a:hover {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 @media only screen and (max-width: 767px) {
