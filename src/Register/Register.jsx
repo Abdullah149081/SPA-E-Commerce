@@ -4,11 +4,11 @@ import { userContext } from "../provider/AuthProvider";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const { user } = useContext(userContext);
+  const { createNewUser } = useContext(userContext);
 
   const handlerSignUp = (e) => {
-    setError("");
     e.preventDefault();
+    setError("");
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
@@ -21,6 +21,13 @@ const Register = () => {
       setError("password should be use 6 characters or longer ");
       return;
     }
+    createNewUser(email, password)
+      .then(() => {
+        form.reset();
+      })
+      .catch((err) => {
+        setError(err?.message); // big problem
+      });
   };
   return (
     <div className="hero mt-20 ">
