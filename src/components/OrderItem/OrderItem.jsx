@@ -3,7 +3,7 @@ import React from "react";
 import "./OrderItem.css";
 
 const OrderItem = ({ orderItem, handlerRemove }) => {
-  const { name, img, price, shipping, id } = orderItem;
+  const { name, img, price, shipping, _id } = orderItem;
 
   return (
     <div className="order-item md:h-36">
@@ -21,7 +21,7 @@ const OrderItem = ({ orderItem, handlerRemove }) => {
           </div>
         </div>
         <div className="py-5 px-5 md:py-0 md:px-0">
-          <TrashIcon onClick={() => handlerRemove(id)} className="h-12 w-12 cursor-pointer  text-error bg-error bg-opacity-25 p-2 rounded-full"></TrashIcon>
+          <TrashIcon onClick={() => handlerRemove(_id)} className="h-12 w-12 cursor-pointer  text-error bg-error bg-opacity-25 p-2 rounded-full"></TrashIcon>
         </div>
       </div>
     </div>
