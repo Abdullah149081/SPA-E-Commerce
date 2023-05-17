@@ -11,12 +11,12 @@ const Order = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [itemsPerPage, setItemsPerPage] = useState(9);
   const { totalProducts } = useLoaderData();
 
   const totalPage = Math.ceil(totalProducts / itemsPerPage);
   const pageNumbers = [...Array(totalPage).keys()]; // method 2
-  const options = [5, 10, 15];
+  const options = [6, 9, 15, 18];
 
   const handleSelectChange = (e) => {
     setItemsPerPage(parseInt(e.target.value, 10));
