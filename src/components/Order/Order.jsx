@@ -1,7 +1,7 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import { addToDb, deleteShoppingCart, getShoppingCart } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
@@ -16,10 +16,10 @@ const Order = () => {
 
   const totalPage = Math.ceil(totalProducts / itemsPerPage);
   const pageNumbers = [...Array(totalPage).keys()]; // method 2
-  const options = [5, 10, 20];
+  const options = [5, 10, 15];
 
   const handleSelectChange = (e) => {
-    setItemsPerPage(parseInt(e.target.value));
+    setItemsPerPage(parseInt(e.target.value, 10));
     setCurrentPage(0);
   };
 
@@ -28,11 +28,11 @@ const Order = () => {
     deleteShoppingCart();
   };
 
-  //important Product component
+  // important Product component
   const addToCart = (product) => {
     // const newCart = [...cart, product];
     let newCart = [];
-    //if product doesn't exist in the cart ,then set quantity =1
+    // if product doesn't exist in the cart ,then set quantity =1
     const exist = cart.find((pd) => pd._id === product._id);
     if (!exist) {
       product.quantity = 1;
@@ -48,18 +48,15 @@ const Order = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch(`http://localhost:5000/products?page=${currentPage}&limit=${itemsPerPage}`)
       .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+      .then((data) => setProducts(data));
+  }, [currentPage, itemsPerPage]);
   useEffect(() => {
-    //local storage id
+    // local storage id
     const storeCart = getShoppingCart();
     const saveCart = [];
-    //Step 1: get id
+    // Step 1: get id
     for (const id in storeCart) {
       // Step 2: get the products by  using  (id)
       const addedProduct = products.find((product) => product._id === id);
@@ -78,42 +75,39 @@ const Order = () => {
   }, [products]);
 
   return (
-    <>
-      <div className="order-container lg:grid-cols-[4fr_1fr]">
-        <div className="md:px-12 lg:px-28  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 py-28  ">
-          {products.map((product) => (
-            <Product product={product} key={product._id} addToCart={addToCart}></Product>
-          ))}
-        </div>
-        <div className="bg-tertiary cart-container">
-          <Cart handlerCartRemove={handlerCartRemove} cart={cart}>
-            <Link>
-              <button className=" order-btn bg-btnPrimary flex items-center justify-around ">
-                Review Order
-                <FontAwesomeIcon icon={faArrowRight} className="ml-2 " />
-              </button>
-            </Link>
-          </Cart>
-        </div>
-
-        <div className="pagination-container text-center py-10">
-          <p>{currentPage}</p>
-          {pageNumbers.map((number) => (
-            <button onClick={() => setCurrentPage(number)} key={number} className={`${currentPage === number && "bg-btnSecondary"} btn bg-btnPrimary border-0 ml-4`}>
-              {number}
-            </button>
-          ))}
-
-          <select className="ml-4 p-2 border rounded-lg text-textColor font-semibold" value={itemsPerPage} onChange={handleSelectChange}>
-            {options.map((option) => (
-              <option className="font-medium border rounded-lg" key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
+    <div className="order-container ">
+      {/* lg:grid-cols-[4fr_1fr] */}
+      <div className="md:px-12 lg:px-28  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 py-28  ">
+        {products.map((product) => (
+          <Product product={product} key={product._id} addToCart={addToCart} />
+        ))}
       </div>
-    </>
+      <div className="bg-tertiary cart-container">
+        <Cart handlerCartRemove={handlerCartRemove} cart={cart}>
+          <button type="button" className=" order-btn bg-btnPrimary flex items-center justify-around ">
+            Review Order
+            <FontAwesomeIcon icon={faArrowRight} className="ml-2 " />
+          </button>
+        </Cart>
+      </div>
+
+      <div className="pagination-container text-center py-10">
+        <p>{currentPage}</p>
+        {pageNumbers.map((number) => (
+          <button type="button" onClick={() => setCurrentPage(number)} key={number} className={`${currentPage === number && "bg-btnSecondary"} btn bg-btnPrimary border-0 ml-4`}>
+            {number}
+          </button>
+        ))}
+
+        <select className="ml-4 p-2 border rounded-lg text-textColor font-semibold" value={itemsPerPage} onChange={handleSelectChange}>
+          {options.map((option) => (
+            <option className="font-medium border rounded-lg" key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
   );
 };
 
