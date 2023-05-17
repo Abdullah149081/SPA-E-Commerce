@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -16,32 +17,32 @@ import PrivateRoutes from "./routes/PrivateRoutes";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home></Home>,
-    errorElement: <ErrorPage></ErrorPage>,
+    element: <Home />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
-        element: <Order></Order>,
+        element: <Order />,
         loader: () => fetch("http://localhost:5000/totalProducts"),
       },
       {
-        path: "orders",
-        element: <Orders></Orders>,
+        path: "/orders",
+        element: <Orders />,
         loader: cartProductLoader,
       },
       {
         path: "/login",
-        element: <Login></Login>,
+        element: <Login />,
       },
       {
         path: "/sign-up",
-        element: <Register></Register>,
+        element: <Register />,
       },
       {
         path: "/proceed-checkout",
         element: (
           <PrivateRoutes>
-            <ProceedCheckout></ProceedCheckout>
+            <ProceedCheckout />
           </PrivateRoutes>
         ),
       },
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router}></RouterProvider>
+      <RouterProvider router={router} />
     </AuthProvider>
   </React.StrictMode>
 );

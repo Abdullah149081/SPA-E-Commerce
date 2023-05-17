@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { userContext } from "../provider/AuthProvider";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const { createNewUser, googleSign } = useContext(userContext);
+  const { createNewUser, googleSign } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handlerSignUp = (e) => {
@@ -18,7 +18,8 @@ const Register = () => {
     if (password !== confirm) {
       setError("password doesn't match");
       return;
-    } else if (password.length < 6) {
+    }
+    if (password.length < 6) {
       setError("password should be use 6 characters or longer ");
       return;
     }

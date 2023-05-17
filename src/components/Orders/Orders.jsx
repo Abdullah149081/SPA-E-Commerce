@@ -1,5 +1,5 @@
 import { CreditCardIcon } from "@heroicons/react/24/solid";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { deleteShoppingCart, removeFromDb } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
@@ -23,13 +23,13 @@ const Orders = () => {
     <div className="order-container">
       <div className="md:px-12 lg:px-28  grid grid-cols-1  gap-4 py-28  ">
         {cart.map((orderItem) => (
-          <OrderItem key={orderItem._id} orderItem={orderItem} handlerRemove={handlerRemove}></OrderItem>
+          <OrderItem key={orderItem._id} orderItem={orderItem} handlerRemove={handlerRemove} />
         ))}
       </div>
       <div className="bg-tertiary cart-container rounded-b-lg">
         <Cart cart={cart} handlerCartRemove={handlerCartRemove}>
           <Link to="/proceed-checkout">
-            <button className=" order-btn flex items-center justify-around  bg-btnPrimary ">
+            <button type="button" className=" order-btn flex items-center justify-around  bg-btnPrimary ">
               Proceed Checkout
               <CreditCardIcon className="h-6 w-6 " />
             </button>

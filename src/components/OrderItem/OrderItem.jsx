@@ -1,5 +1,5 @@
 import { TrashIcon } from "@heroicons/react/24/solid";
-import React from "react";
+
 import "./OrderItem.css";
 
 const OrderItem = ({ orderItem, handlerRemove }) => {
@@ -21,7 +21,7 @@ const OrderItem = ({ orderItem, handlerRemove }) => {
           </div>
         </div>
         <div className="py-5 px-5 md:py-0 md:px-0">
-          <TrashIcon onClick={() => handlerRemove(_id)} className="h-12 w-12 cursor-pointer  text-error bg-error bg-opacity-25 p-2 rounded-full"></TrashIcon>
+          <TrashIcon onClick={() => handlerRemove(_id)} className="h-12 w-12 cursor-pointer  text-error bg-error bg-opacity-25 p-2 rounded-full" />
         </div>
       </div>
     </div>

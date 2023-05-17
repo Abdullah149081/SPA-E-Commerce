@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { getShoppingCart } from "../utilities/fakedb";
 
 const cartProductLoader = async () => {

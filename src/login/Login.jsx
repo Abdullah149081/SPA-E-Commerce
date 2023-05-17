@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { userContext } from "../provider/AuthProvider";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const { signInUser, googleSign } = useContext(userContext);
+  const { signInUser, googleSign } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   // location.state?.from?.pathname || "/";
