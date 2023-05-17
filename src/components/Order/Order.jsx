@@ -10,11 +10,18 @@ import "./Order.css";
 const Order = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const { totalProducts } = useLoaderData();
-  const productsPerPage = 10;
 
-  const totalPage = Math.ceil(totalProducts / productsPerPage);
-  const pageNumbers = [...Array(totalPage).keys()];
+  const totalPage = Math.ceil(totalProducts / itemsPerPage);
+  const pageNumbers = [...Array(totalPage).keys()]; // method 2
+  const options = [5, 10, 20];
+
+  const handleSelectChange = (e) => {
+    setItemsPerPage(parseInt(e.target.value));
+    setCurrentPage(0);
+  };
 
   const handlerCartRemove = () => {
     setCart([]);
@@ -90,11 +97,20 @@ const Order = () => {
         </div>
 
         <div className="pagination-container text-center py-10">
+          <p>{currentPage}</p>
           {pageNumbers.map((number) => (
-            <button key={number} className="btn bg-btnPrimary border-0 ml-4">
+            <button onClick={() => setCurrentPage(number)} key={number} className={`${currentPage === number && "bg-btnSecondary"} btn bg-btnPrimary border-0 ml-4`}>
               {number}
             </button>
           ))}
+
+          <select className="ml-4 p-2 border rounded-lg text-textColor font-semibold" value={itemsPerPage} onChange={handleSelectChange}>
+            {options.map((option) => (
+              <option className="font-medium border rounded-lg" key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
     </>
