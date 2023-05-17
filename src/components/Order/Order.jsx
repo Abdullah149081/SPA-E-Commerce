@@ -11,7 +11,10 @@ const Order = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const { totalProducts } = useLoaderData();
-  console.log(totalProducts);
+  const productsPerPage = 10;
+
+  const totalPage = Math.ceil(totalProducts / productsPerPage);
+  const pageNumbers = [...Array(totalPage).keys()];
 
   const handlerCartRemove = () => {
     setCart([]);
@@ -68,23 +71,33 @@ const Order = () => {
   }, [products]);
 
   return (
-    <div className="order-container">
-      <div className="md:px-12 lg:px-28  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 py-28  ">
-        {products.map((product) => (
-          <Product product={product} key={product._id} addToCart={addToCart}></Product>
-        ))}
-      </div>
-      <div className="bg-tertiary cart-container">
-        <Cart handlerCartRemove={handlerCartRemove} cart={cart}>
-          <Link>
-            <button className=" order-btn bg-btnPrimary flex items-center justify-around ">
-              Review Order
-              <FontAwesomeIcon icon={faArrowRight} className="ml-2 " />
+    <>
+      <div className="order-container lg:grid-cols-[4fr_1fr]">
+        <div className="md:px-12 lg:px-28  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 py-28  ">
+          {products.map((product) => (
+            <Product product={product} key={product._id} addToCart={addToCart}></Product>
+          ))}
+        </div>
+        <div className="bg-tertiary cart-container">
+          <Cart handlerCartRemove={handlerCartRemove} cart={cart}>
+            <Link>
+              <button className=" order-btn bg-btnPrimary flex items-center justify-around ">
+                Review Order
+                <FontAwesomeIcon icon={faArrowRight} className="ml-2 " />
+              </button>
+            </Link>
+          </Cart>
+        </div>
+
+        <div className="pagination-container text-center py-10">
+          {pageNumbers.map((number) => (
+            <button key={number} className="btn bg-btnPrimary border-0 ml-4">
+              {number}
             </button>
-          </Link>
-        </Cart>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
