@@ -92,7 +92,6 @@ const Order = () => {
       </div>
 
       <div className="pagination-container text-center py-10">
-        <p>{currentPage}</p>
         {pageNumbers.map((number) => (
           <button type="button" onClick={() => setCurrentPage(number)} key={number} className={`${currentPage === number && "bg-btnSecondary"} btn bg-btnPrimary border-0 ml-4`}>
             {number}
