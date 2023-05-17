@@ -1,7 +1,7 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { addToDb, deleteShoppingCart, getShoppingCart } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
@@ -10,6 +10,8 @@ import "./Order.css";
 const Order = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const { totalProducts } = useLoaderData();
+  console.log(totalProducts);
 
   const handlerCartRemove = () => {
     setCart([]);
