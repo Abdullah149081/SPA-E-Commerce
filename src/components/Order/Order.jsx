@@ -55,24 +55,35 @@ const Order = () => {
   useEffect(() => {
     // local storage id
     const storeCart = getShoppingCart();
-    const saveCart = [];
-    // Step 1: get id
-    for (const id in storeCart) {
-      // Step 2: get the products by  using  (id)
-      const addedProduct = products.find((product) => product._id === id);
+    const ids = Object.keys(storeCart);
+    fetch("http://localhost:5000/productsById", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(ids),
+    })
+      .then((res) => res.json())
+      .then((cardProduct) => {
+        const saveCart = [];
+        // Step 1: get id
+        for (const id in storeCart) {
+          // Step 2: get the products by  using  (id)
+          const addedProduct = cardProduct.find((product) => product._id === id);
 
-      if (addedProduct) {
-        // Step 3: get quantity of the products
-        const quantity = storeCart[id];
-        addedProduct.quantity = quantity;
-        // Step:4  add the addedProduct to the saveCart
-        saveCart.push(addedProduct);
-      }
-    }
+          if (addedProduct) {
+            // Step 3: get quantity of the products
+            const quantity = storeCart[id];
+            addedProduct.quantity = quantity;
+            // Step:4  add the addedProduct to the saveCart
+            saveCart.push(addedProduct);
+          }
+        }
 
-    // Step  5: Set the cart
-    setCart(saveCart);
-  }, [products]);
+        // Step  5: Set the cart
+        setCart(saveCart);
+      });
+  }, []);
 
   return (
     <div className="order-container ">
@@ -94,7 +105,7 @@ const Order = () => {
       <div className="pagination-container text-center py-10">
         {pageNumbers.map((number) => (
           <button type="button" onClick={() => setCurrentPage(number)} key={number} className={`${currentPage === number && "bg-btnSecondary"} btn bg-btnPrimary border-0 ml-4`}>
-            {number}
+            {number + 1}
           </button>
         ))}
 
